@@ -76,13 +76,6 @@ void processPerceptron()
         }
     }
 
-    for (int j = 1; j <= n2; ++j)
-    {
-        cout << in2[j] << " ";
-    }
-    cout<<endl;
-    exit(-1);
-
     for (int i = 1; i <= n2; ++i)
     {
         out2[i] = sigmoid(in2[i]);
