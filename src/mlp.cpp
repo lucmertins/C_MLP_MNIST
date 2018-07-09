@@ -12,6 +12,7 @@
 
 #include "mlp.h"
 #include "mlpTraining.h"
+#include "mlpTesting.h"
 
 using namespace std;
 
@@ -76,13 +77,6 @@ void processPerceptron()
         }
     }
 
-    for (int j = 1; j <= n2; ++j)
-    {
-        cout << in2[j] << " ";
-    }
-    cout<<endl;
-    exit(-1);
-
     for (int i = 1; i <= n2; ++i)
     {
         out2[i] = sigmoid(in2[i]);
@@ -110,12 +104,23 @@ void showDate()
     report << "Tempo:  " << result << endl;
 }
 
-int main(int argc, char *argv[])
+double squareError()
+{
+    double res = 0.0;
+    for (int i = 1; i <= n3; ++i)
+    {
+        res += (out3[i] - expected[i]) * (out3[i] - expected[i]);
+    }
+    res *= 0.5;
+    return res;
+}
+
+void doTraining()
 {
     aboutTraining();
-    report.open(report_fn.c_str(), ios::out);
-    image.open(training_image_fn.c_str(), ios::in | ios::binary); // Binary image file
-    label.open(training_label_fn.c_str(), ios::in | ios::binary); // Binary label file
+    report.open(reportTraining.c_str(), ios::out);
+    image.open(training_image.c_str(), ios::in | ios::binary); // Binary image file
+    label.open(training_label.c_str(), ios::in | ios::binary); // Binary label file
 
     // Retirar headers do arquivo
     char number;
@@ -138,4 +143,34 @@ int main(int argc, char *argv[])
     report.close();
     image.close();
     label.close();
+}
+
+void doTesting()
+{
+    aboutTesting();
+    report.open(reportTesting.c_str(), ios::out);
+    image.open(training_image.c_str(), ios::in | ios::binary); // Binary image file
+    label.open(training_label.c_str(), ios::in | ios::binary); // Binary label file
+
+    // Retirar headers do arquivo
+    char number;
+    for (int i = 1; i <= 16; ++i)
+    {
+        image.read(&number, sizeof(char));
+    }
+    for (int i = 1; i <= 8; ++i)
+    {
+        label.read(&number, sizeof(char));
+    }
+    initLayersRoundWeight();
+
+    loadMLP(model_fn);
+
+    testing();
+}
+
+int main(int argc, char *argv[])
+{
+    //doTraining();
+    doTesting();
 }

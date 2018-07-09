@@ -1,3 +1,6 @@
+#include <string>
+
+using namespace std;
 // Image size in MNIST database
 extern const int width ,height;
 
@@ -17,6 +20,24 @@ extern const double learning_rate;
 extern const double momentum;
 extern const double epsilon;
 
+// Training 
+const string training_image = "../mnist/train-images.idx3-ubyte";
+const string training_label = "../mnist/train-labels.idx1-ubyte";
+
+// Testing
+const string testing_image = "../mnist/t10k-images.idx3-ubyte";
+const string testing_label = "../mnist/t10k-labels.idx1-ubyte";
+
+// Numero de exemplos
+const int nTraining = 60000;
+const int nTesting = 10000;
+
+// Relatório
+const string reportTraining = "relatorioTreinamento.log";
+const string reportTesting = "relatorioTeste.log";
+
+const string model_fn = "mlp.obj";
+
 
 // MLP Definition
 // input layer
@@ -29,7 +50,7 @@ extern double *w2[],*delta2[], *in2, *out2, *theta2;
 extern double *in3, *out3,*theta3;
 
 double sigmoid(double x);
-
+double squareError();
 void processPerceptron();
 
 

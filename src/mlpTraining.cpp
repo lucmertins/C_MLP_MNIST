@@ -23,8 +23,8 @@ void aboutTraining()
     cout << "Momentum: " << momentum << endl;
     cout << "Epsilon: " << epsilon << endl;
     cout << endl;
-    cout << "Training image data: " << training_image_fn << endl;
-    cout << "Training label data: " << training_label_fn << endl;
+    cout << "Training image data: " << training_image << endl;
+    cout << "Training label data: " << training_label << endl;
     cout << "No. training sample: " << nTraining << endl
          << endl;
 }
@@ -108,17 +108,6 @@ void saveMLP(string file_name)
     file.close();
 }
 
-double squareError()
-{
-    double res = 0.0;
-    for (int i = 1; i <= n3; ++i)
-    {
-        res += (out3[i] - expected[i]) * (out3[i] - expected[i]);
-    }
-    res *= 0.5;
-    return res;
-}
-
 void backPropagation()
 {
     double sum;
@@ -184,7 +173,7 @@ int learning()
     }
     return epochs;
 }
-void input()
+void inputTraining()
 {
     // Reading image
     char number;
@@ -243,7 +232,7 @@ void training()
         cout << "Sample " << sample << endl;
 
         // Getting (image, label)
-        input();
+        inputTraining();
 
         // Learning process: Perceptron (Forward procedure) - Back propagation
         int nIterations = learning();

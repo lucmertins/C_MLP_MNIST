@@ -9,8 +9,6 @@ extern ifstream image;
 extern ifstream label;
 extern ofstream report;
 
-
-void aboutTraining();
-void initLayersRoundWeight();
-void saveMLP(string file_name);
-void training();
+void aboutTesting();
+void loadMLP(string file_name);
+void testing();
