@@ -84,6 +84,12 @@ void processPerceptron()
 
     for (int i = 1; i <= n2; ++i)
     {
+        cout << "[" << in2[i] << " " << out2[i] << "]";
+    }
+    exit(12);
+
+    for (int i = 1; i <= n2; ++i)
+    {
         for (int j = 1; j <= n3; ++j)
         {
             in3[j] += out2[i] * w2[i][j];
@@ -171,6 +177,6 @@ void doTesting()
 
 int main(int argc, char *argv[])
 {
-    //doTraining();
-    doTesting();
+    doTraining();
+    //doTesting();
 }
