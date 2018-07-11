@@ -195,15 +195,15 @@ void inputTraining()
         }
     }
 
-    cout << "Image:" << endl;
-    for (int j = 1; j <= height; ++j)
-    {
-        for (int i = 1; i <= width; ++i)
-        {
-            cout << d[i][j];
-        }
-        cout << endl;
-    }
+    // cout << "Image:" << endl;
+    // for (int j = 1; j <= height; ++j)
+    // {
+    //     for (int i = 1; i <= width; ++i)
+    //     {
+    //         cout << d[i][j];
+    //     }
+    //     cout << endl;
+    // }
 
     for (int j = 1; j <= height; ++j)
     {
